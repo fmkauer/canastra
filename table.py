@@ -112,7 +112,7 @@ class Table():
                         break
                     elif choice == 'a':
                         # Get the card and target sequence from the player
-                    try:
+                        try:
                         card_index = int(input("Enter the index of the card to play (0-based): "))
                         card_to_play = player.hand[card_index]
 
