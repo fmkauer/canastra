@@ -245,11 +245,14 @@ class Table:
     def calculate_sequence_score(self, sequence: List[Card]) -> int:
         """Calculates the score of a sequence."""
         score = 0
+        sequence.sort()  # Sort the sequence to ensure cards are in order
         for card in sequence:
             score += self.card_values[card.value]
         if len(sequence) >= 7:
-            if any(card.value == Value.TWO for card in sequence) and sequence[1].value != Value.TWO:
-                score += 100  # Dirty Canastra with TWO as wildcard
+            for i in range(1, len(sequence)):
+                if sequence[i].value == Value.TWO and sequence[i - 1].value == Value.THREE and sequence[i].suit == sequence[i - 1].suit:
+                    score += 100  # Dirty Canastra with TWO as wildcard
+                    break
             else:
                 score += 200 if all(card.value != Value.TWO for card in sequence) else 100
         return score
