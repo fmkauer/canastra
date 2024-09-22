@@ -26,8 +26,8 @@ class Table():
             # TODO: Validate that the 3 cards are a valid sequence
         else:
             # Adding to existing sequence - validate card
-            # TODO: Implement validation for adding to existing sequence
-            pass
+            if not self.is_valid_sequence(target_sequence + [card]):
+                raise ValueError("Invalid card for this sequence")
 
         player.play_card(card, team_sequences, sequence_index)
 
