@@ -23,7 +23,8 @@ class Table():
             # New sequence - needs at least 3 cards
             if len(player.hand) < 3:
                 raise ValueError("Not enough cards to start a new sequence")
-            # TODO: Validate that the 3 cards are a valid sequence
+            if not self.is_valid_sequence(player.hand[:3]):
+                raise ValueError("Invalid sequence")
         else:
             # Adding to existing sequence - validate card
             if not self.is_valid_sequence(target_sequence + [card]):
