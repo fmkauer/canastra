@@ -60,11 +60,58 @@ class Table():
             while True:
                 choice = input("Start a new sequence (s) or add to an existing one (a)? ").lower()
                 if choice == 's':
-                    # Implement starting a new sequence
-                    # ... (logic for starting a new sequence)
-                    break
-                elif choice == 'a':
-                    # Get the card and target sequence from the player
+                    if choice == 's':
+                        selected_cards = []
+                        while True:
+                            # Display player's hand
+                            print(f"\n{player.name}'s hand:")
+                            for i, card in enumerate(player.hand):
+                                if card in selected_cards:
+                                    print(f"> {i}: {card} <")
+                                else:
+                                    print(f"{i}: {card}")
+
+                            # Get player's card choice
+                            try:
+                                card_index = input(
+                                    "Enter the index of the card to add to the sequence (0-based, 'c' to confirm, 'q' to cancel): "
+                                )
+                                if card_index == 'c':
+                                    if len(selected_cards) >= 3:
+                                        # Validate the new sequence
+                                        if self.is_valid_move(selected_cards[0], selected_cards):
+                                            # Determine which team the player belongs to
+                                            if player in self.players[:len(self.players) // 2]:
+                                                self.team1_sequences.append(selected_cards)
+                                            else:
+                                                self.team2_sequences.append(selected_cards)
+                                            # Remove cards from the player's hand
+                                            for card in selected_cards:
+                                                player.hand.remove(card)
+                                            print("New sequence created successfully!")
+                                            break
+                                        else:
+                                            print("Invalid sequence. Please select valid cards.")
+                                    else:
+                                        print("A sequence must have at least 3 cards.")
+                                elif card_index == 'q':
+                                    break
+                                else:
+                                    card_index = int(card_index)
+                                    # Add or remove card from selection
+                                    if 0 <= card_index < len(player.hand):
+                                        card = player.hand[card_index]
+                                        if card in selected_cards:
+                                            selected_cards.remove(card)
+                                        else:
+                                            selected_cards.append(card)
+                                    else:
+                                        print("Invalid card index.")
+                            except (ValueError, IndexError) as e:
+                                print(f"Invalid input: {e}")
+                        break
+                    elif choice == 'a':
+                        # Get the card and target sequence from the player
                     try:
                         card_index = int(input("Enter the index of the card to play (0-based): "))
                         card_to_play = player.hand[card_index]
