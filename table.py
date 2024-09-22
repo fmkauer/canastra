@@ -54,7 +54,11 @@ class Table():
             elif play_card == 'y':
                 # Display player's hand and team sequences
                 print(f"\n{player.name}'s hand:")
-                player.show_hand()
+                for i, card in enumerate(player.hand):
+                    if i == len(player.hand) - 1:
+                        print(f"> {i}: {card} <")
+                    else:
+                        print(f"{i}: {card}")
                 self.show_sequences()
 
                 # Get the card and target sequence from the player
