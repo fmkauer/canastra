@@ -22,7 +22,7 @@ def main():
         while not round_over:
             # Player turn
             print(f"{current_player.name}'s turn")
-            # TODO: Implement player turn logic
+            table.play_turn(current_player)
 
             # Check if the round is over
             if len(current_player.hand) == 0:

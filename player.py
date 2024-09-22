@@ -47,3 +47,12 @@ class Player():
                     print("Invalid sequence choice. Please choose a valid number.")
             except ValueError:
                 print("Invalid input. Please enter a number.")
+
+    def choose_card(self) -> Card:
+        """Prompts the player to choose a card from their hand and returns it."""
+        while True:
+            try:
+                card_index = int(input("Enter the index of the card to play (0-based): "))
+                return self.hand[card_index]
+            except (ValueError, IndexError) as e:
+                print(f"Invalid input: {e}")
