@@ -23,13 +23,17 @@ class Table():
         player.show_hand()
 
         # 1. Draw a card
-        draw_choice = input("Draw a card from the deck (d) or take the waste pile (w)? ").lower()
-        if draw_choice == 'd':
-            player.draw(self.deck)
-        elif draw_choice == 'w':
-            player.draw_from_waste(self.waste)
+        if len(player.hand) > 1:
+            draw_choice = input("Draw a card from the deck (d) or take the waste pile (w)? ").lower()
+            if draw_choice == 'd':
+                player.draw(self.deck)
+            elif draw_choice == 'w':
+                player.draw_from_waste(self.waste)
+            else:
+                print("Invalid choice. Drawing from the deck by default.")
+                player.draw(self.deck)
         else:
-            print("Invalid choice. Drawing from the deck by default.")
+            print("You only have one card left, drawing from the deck.")
             player.draw(self.deck)
 
         # 2. Play cards (optional)
