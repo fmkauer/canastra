@@ -31,20 +31,14 @@ When a round starts, if a team has more than 1500 points, for their first play, 
 - [x] Implement player hands and drawing cards.
 - [ ] Implement game logic for playing cards and forming canastas.
     - [x] Implement player turns.
-        1. Create a method in `table.py` to cycle through players.
-        2. The method should take the current player and return the next player.
     - [x] Implement drawing cards from the deck or waste pile.
-        1. Add a method to `player.py` to draw from the waste pile.
-        2. Modify the existing `draw` method to take an optional argument indicating whether to draw from the deck or waste pile.
     - [x] Implement playing cards from hand to the table.
-        1. Add a method to `player.py` to play a card from their hand to the table.
-        2. The method should take the card and the target sequence on the table as arguments.
-    - [ ] Implement validating played sequences.
-        1. Add a method to `table.py` to validate if a played sequence is valid.
-        2. The method should check if the sequence meets the Canastra rules (at least three cards of the same suit, using wildcards appropriately).
+    - [x] Implement validating played sequences.
     - [ ] Implement forming Canastras.
         1. Add a method to `table.py` to check if a Canastra is formed.
         2. The method should check if a sequence has at least seven cards and apply the appropriate scoring rules.
+        3. Implement scoring logic for clean Canastra, adding points to the team score
+        4. Implement scoring logic for dirty Canastra, adding points to the team score
 - [ ] Implement scoring system.
     - [ ] Create a method in `table.py` to calculate the score for a given team.
         1. The method should consider the cards on the table, canastas formed, and any special cards used.
