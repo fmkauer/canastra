@@ -228,4 +228,24 @@ from deck import Deck
             print("Dirty Canastra formed!")
             return 100
 
-        return True
+    def calculate_sequence_score(self, sequence: List[Card]) -> int:
+        """Calculates the score of a sequence."""
+        score = 0
+        for card in sequence:
+            score += self.card_values[card.value]
+        if len(sequence) >= 7:
+            score += 200 if all(card.value != Value.TWO for card in sequence) else 100
+        return score
+
+    def calculate_team_score(self, team_sequences: List[List[Card]]) -> int:
+        """Calculates the total score for a team."""
+        total_score = 0
+        for sequence in team_sequences:
+            total_score += self.calculate_sequence_score(sequence)
+        return total_score
+
+    def get_round_scores(self) -> Tuple[int, int]:
+        """Calculates and returns the scores for both teams for the current round."""
+        team1_score = self.calculate_team_score(self.team1_sequences)
+        team2_score = self.calculate_team_score(self.team2_sequences)
+        return team1_score, team2_score
