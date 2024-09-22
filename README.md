@@ -30,7 +30,7 @@ When a round starts, if a team has more than 1500 points, for their first play, 
 
 - [x] Implement card deck creation and shuffling.
 - [x] Implement player hands and drawing cards.
-- [ ] Implement game logic for playing cards and forming canastas.
+- [x] Implement game logic for playing cards and forming canastas.
     - [x] Implement player turns.
     - [x] Implement drawing cards from the deck or waste pile.
     - [x] Implement playing cards from hand to the table.
