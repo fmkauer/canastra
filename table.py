@@ -1,9 +1,9 @@
-from deck import Deck
+from typing import List
+
+from cards import Card, Value
 from player import Player
 from waste import Waste
-from cards import Card
-from typing import List
-from cards import Card, Value
+from deck import Deck
 
 class Table():
     def __init__(self, players: List[Player], deck_amount: int = 2):

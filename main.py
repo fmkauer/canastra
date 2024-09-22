@@ -1,6 +1,6 @@
-from deck import Deck
-from table import Table
 from player import Player
+from table import Table
+from deck import Deck
 
 def main():
     team1_score = 0

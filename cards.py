@@ -39,7 +39,7 @@ class Card:
         self.real_value = self.get_real_value()
 
     def __repr__(self):
-        return "Joker" if self.value == Value.JOKER else f"{self.value.value} of {self.suit.value}"
+        return "Joker" if self.value == Value.JOKER else f"{self.value.value}{self.suit.value}"
     
     def __lt__(self, other: Card):
         if isinstance(other, Card):
