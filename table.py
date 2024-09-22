@@ -14,6 +14,11 @@ class Table():
         self.deal()
         self.current_player_index = 0
 
+    def play_card_to_sequence(self, player: Player, card: Card, team_sequences: list):
+        # TODO: Implement logic to find the correct sequence based on card and existing sequences
+        target_sequence = team_sequences[0]  # Placeholder, replace with actual logic
+        player.play_card(card, target_sequence)
+
     def deal(self):
         for _ in range(13):
             for player in self.players:

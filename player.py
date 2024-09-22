@@ -24,3 +24,10 @@ class Player():
 
     def draw_from_waste(self, waste: Waste):
         self.hand.extend(waste.take())
+
+    def play_card(self, card: Card, target_sequence: list):
+        if card in self.hand:
+            self.hand.remove(card)
+            target_sequence.append(card)
+        else:
+            raise ValueError("Card not in hand")
