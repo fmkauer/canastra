@@ -31,6 +31,20 @@ class Table():
 
         player.play_card(card, team_sequences, sequence_index)
 
+    def is_valid_sequence(self, sequence: List[Card]) -> bool:
+        """
+        Check if a played sequence is valid according to Canastra rules.
+
+        Args:
+            sequence: A list of Card objects representing the played sequence.
+
+        Returns:
+            True if the sequence is valid, False otherwise.
+        """
+        # TODO: Implement Canastra sequence validation logic here
+        # Check for at least three cards of the same suit, using wildcards appropriately.
+        return True  # Placeholder, replace with actual validation logic
+
     def deal(self):
         for _ in range(13):
             for player in self.players:
