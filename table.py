@@ -42,9 +42,26 @@ class Table():
         Returns:
             True if the sequence is valid, False otherwise.
         """
-        # TODO: Implement Canastra sequence validation logic here
-        # Check for at least three cards of the same suit, using wildcards appropriately.
-        return True  # Placeholder, replace with actual validation logic
+        # Check if the sequence has at least three cards
+        if len(sequence) < 3:
+            return False
+
+        # Check if all cards have the same suit, considering wildcards
+        wildcards = 0
+        base_suit = None
+        for card in sequence:
+            if card.value == Value.JOKER or card.value == Value.TWO:
+                wildcards += 1
+            elif base_suit is None:
+                base_suit = card.suit
+            elif card.suit != base_suit:
+                return False
+
+        # Check if there are enough natural cards (non-wildcards)
+        if len(sequence) - wildcards < 3:
+            return False
+
+        return True
 
     def deal(self):
         for _ in range(13):
@@ -62,3 +79,29 @@ class Table():
         print("Team 2 Sequences:")
         for sequence in self.team2_sequences:
             print(sequence)
+
+    def check_canastra(self, sequence: List[Card]):
+        """
+        Check if a sequence forms a Canastra and apply scoring rules.
+
+        Args:
+            sequence: A list of Card objects representing the sequence.
+
+        Returns:
+            True if a Canastra is formed, False otherwise.
+        """
+        if len(sequence) < 7:
+            return False
+
+        # Check if the Canastra is clean or dirty
+        is_clean = all(card.value != Value.TWO for card in sequence)
+
+        # Apply scoring rules based on Canastra type
+        if is_clean:
+            # TODO: Implement scoring logic for clean Canastra
+            print("Clean Canastra formed!")
+        else:
+            # TODO: Implement scoring logic for dirty Canastra
+            print("Dirty Canastra formed!")
+
+        return True
