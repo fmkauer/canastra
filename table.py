@@ -64,36 +64,29 @@ if play_card == 'y':
             # ... (logic for starting a new sequence)
             break
         elif choice == 'a':
-                break
-            elif play_card == 'y':
-                # Display player's hand and team sequences
-                print(f"\n{player.name}'s hand:")
-                for i, card in enumerate(player.hand):
-                    if i == len(player.hand) - 1:
-                        print(f"> {i}: {card} <")
-                    else:
-                        print(f"{i}: {card}")
-                self.show_sequences()
+                            # Get the card and target sequence from the player
+                            try:
+                                card_index = int(input("Enter the index of the card to play (0-based): "))
+                                card_to_play = player.hand[card_index]
 
-                # Get the card and target sequence from the player
-                try:
-                    card_index = int(input("Enter the index of the card to play (0-based): "))
-                    card_to_play = player.hand[card_index]
+                                if player in self.players[:len(self.players) // 2]:
+                                    team_sequences = self.team1_sequences
+                                else:
+                                    team_sequences = self.team2_sequences
 
-                    if player in self.players[:len(self.players) // 2]:
-                        team_sequences = self.team1_sequences
-                    else:
-                        team_sequences = self.team2_sequences
+                                sequence_index = player.choose_sequence(team_sequences)
 
-                    sequence_index = player.choose_sequence(team_sequences)
-
-                    # Attempt to play the card
-                    self.play_card_to_sequence(player, card_to_play, team_sequences, sequence_index)
-                    print("Card played successfully!")
-                except (ValueError, IndexError) as e:
-                    print(f"Invalid input or move: {e}")
-            else:
-                print("Invalid choice. Please enter 'y' or 'n'.")
+                                # Attempt to play the card
+                                self.play_card_to_sequence(player, card_to_play, team_sequences, sequence_index)
+                                print("Card played successfully!")
+                                break  # Exit the loop if the card was played successfully
+                            except (ValueError, IndexError) as e:
+                                print(f"Invalid input or move: {e}")
+                        else:
+                            print("Invalid choice. Please enter 's' or 'a'.")
+                    break # Exit the loop if the card was played successfully
+                else:
+                    print("Invalid choice. Please enter 'y' or 'n'.")
 
         # 3. Discard a card
         while True:
