@@ -15,6 +15,71 @@ class Table():
         self.deal()
         self.current_player_index = 0
 
+    def play_turn(self, player: Player):
+        """Manages a player's turn during the game."""
+        print("\nWaste pile:")
+        self.waste.show()
+        print(f"\n{player.name}'s hand:")
+        player.show_hand()
+
+        # 1. Draw a card
+        draw_choice = input("Draw a card from the deck (d) or take the waste pile (w)? ").lower()
+        if draw_choice == 'd':
+            player.draw(self.deck)
+        elif draw_choice == 'w':
+            player.draw_from_waste(self.waste)
+        else:
+            print("Invalid choice. Drawing from the deck by default.")
+            player.draw(self.deck)
+
+        # 2. Play cards (optional)
+        while True:
+            play_card = input("Do you want to play a card? (y/n): ").lower()
+            if play_card == 'n':
+                break
+            elif play_card == 'y':
+                # Display player's hand and team sequences
+                print(f"\n{player.name}'s hand:")
+                player.show_hand()
+                self.show_sequences()
+
+                # Get the card and target sequence from the player
+                try:
+                    card_index = int(input("Enter the index of the card to play (0-based): "))
+                    card_to_play = player.hand[card_index]
+
+                    if player in self.players[:len(self.players) // 2]:
+                        team_sequences = self.team1_sequences
+                    else:
+                        team_sequences = self.team2_sequences
+
+                    sequence_index = player.choose_sequence(team_sequences)
+
+                    # Attempt to play the card
+                    self.play_card_to_sequence(player, card_to_play, team_sequences, sequence_index)
+                    print("Card played successfully!")
+                except (ValueError, IndexError) as e:
+                    print(f"Invalid input or move: {e}")
+            else:
+                print("Invalid choice. Please enter 'y' or 'n'.")
+
+        # 3. Discard a card
+        discard_card = input("Do you want to discard a card? (y/n): ").lower()
+        if discard_card == 'y':
+            while True:
+                try:
+                    card_index = int(input("Enter the index of the card to discard (0-based): "))
+                    card_to_discard = player.hand[card_index]
+                    player.discard(self.waste, card_to_discard)
+                    break
+                except (ValueError, IndexError) as e:
+                    print(f"Invalid input: {e}")
+        elif discard_card == 'n':
+            print("Ending turn without discarding.")
+        else:
+            print("Invalid choice. Ending turn without discarding.")
+
+
     def play_card_to_sequence(self, player: Player, card: Card, team_sequences: list, sequence_index: int):
         target_sequence = team_sequences[sequence_index]
 
