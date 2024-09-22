@@ -248,7 +248,10 @@ class Table:
         for card in sequence:
             score += self.card_values[card.value]
         if len(sequence) >= 7:
-            score += 200 if all(card.value != Value.TWO for card in sequence) else 100
+            if any(card.value == Value.TWO for card in sequence) and sequence[1].value != Value.TWO:
+                score += 100  # Dirty Canastra with TWO as wildcard
+            else:
+                score += 200 if all(card.value != Value.TWO for card in sequence) else 100
         return score
 
     def calculate_team_score(self, team_sequences: List[List[Card]]) -> int:
