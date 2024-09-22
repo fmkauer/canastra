@@ -86,10 +86,12 @@ class Table():
 
         # Apply scoring rules based on Canastra type
         if is_clean:
-            # TODO: Implement scoring logic for clean Canastra, adding points to the team score
+            # Implement scoring logic for clean Canastra, adding points to the team score
             print("Clean Canastra formed!")
+            return 200
         else:
-            # TODO: Implement scoring logic for dirty Canastra, adding points to the team score
+            # Implement scoring logic for dirty Canastra, adding points to the team score
             print("Dirty Canastra formed!")
+            return 100
 
         return True
