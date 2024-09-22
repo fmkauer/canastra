@@ -114,7 +114,7 @@ class Table():
                         # Get the card and target sequence from the player
                         try:
                             card_index = int(input("Enter the index of the card to play (0-based): "))
-                        card_to_play = player.hand[card_index]
+                            card_to_play = player.hand[card_index]
 
                         if player in self.players[:len(self.players) // 2]:
                             team_sequences = self.team1_sequences
