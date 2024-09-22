@@ -64,20 +64,14 @@ class Table():
                 print("Invalid choice. Please enter 'y' or 'n'.")
 
         # 3. Discard a card
-        discard_card = input("Do you want to discard a card? (y/n): ").lower()
-        if discard_card == 'y':
-            while True:
-                try:
-                    card_index = int(input("Enter the index of the card to discard (0-based): "))
-                    card_to_discard = player.hand[card_index]
-                    player.discard(self.waste, card_to_discard)
-                    break
-                except (ValueError, IndexError) as e:
-                    print(f"Invalid input: {e}")
-        elif discard_card == 'n':
-            print("Ending turn without discarding.")
-        else:
-            print("Invalid choice. Ending turn without discarding.")
+        while True:
+            try:
+                card_index = int(input("Enter the index of the card to discard (0-based): "))
+                card_to_discard = player.hand[card_index]
+                player.discard(self.waste, card_to_discard)
+                break
+            except (ValueError, IndexError) as e:
+                print(f"Invalid input: {e}")
 
 
     def play_card_to_sequence(self, player: Player, card: Card, team_sequences: list, sequence_index: int):
