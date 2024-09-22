@@ -34,7 +34,7 @@ When a round starts, if a team has more than 1500 points, for their first play, 
     - [x] Implement drawing cards from the deck or waste pile.
     - [x] Implement playing cards from hand to the table.
     - [x] Implement validating played sequences.
-    - [ ] Implement forming Canastras.
+    - [x] Implement forming Canastras.
         1. Add a method to `table.py` to check if a Canastra is formed.
         2. The method should check if a sequence has at least seven cards and apply the appropriate scoring rules.
         3. Implement scoring logic for clean Canastra, adding points to the team score
