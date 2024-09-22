@@ -34,9 +34,7 @@ The game ends when a team reaches 3000 points, and the team with the most points
     - [x] Implement drawing cards from the deck or waste pile.
         1. Add a method to `player.py` to draw from the waste pile.
         2. Modify the existing `draw` method to take an optional argument indicating whether to draw from the deck or waste pile.
-        1. Add a method to `player.py` to draw from the waste pile.
-        2. Modify the existing `draw` method to take an optional argument indicating whether to draw from the deck or waste pile.
-    - [ ] Implement playing cards from hand to the table.
+    - [x] Implement playing cards from hand to the table.
         1. Add a method to `player.py` to play a card from their hand to the table.
         2. The method should take the card and the target sequence on the table as arguments.
     - [ ] Implement validating played sequences.
