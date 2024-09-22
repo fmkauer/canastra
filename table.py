@@ -9,6 +9,8 @@ class Table():
         self.players: List[Player] = players
         self.deck: Deck = Deck(deck_amount)
         self.waste: Waste = Waste()
+        self.team1_sequences = []
+        self.team2_sequences = []
         self.deal()
         self.current_player_index = 0
 
