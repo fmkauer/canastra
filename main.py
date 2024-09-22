@@ -15,12 +15,25 @@ def main():
 
         # Initialize game
         table = Table([player1, player2, player3, player4], 2)
+        current_player = player1
 
-        # TODO: Implement game logic for a single round
+        # Round loop
+        round_over = False
+        while not round_over:
+            # Player turn
+            print(f"{current_player.name}'s turn")
+            # TODO: Implement player turn logic
+
+            # Check if the round is over
+            if len(current_player.hand) == 0:
+                round_over = True
+
+            # Move to the next player
+            current_player = table.next_player()
 
         # Update scores (placeholder)
-        team1_score += 100  
-        team2_score += 150  
+        team1_score += 100
+        team2_score += 150
 
         print(f"Round over! Team 1: {team1_score}, Team 2: {team2_score}")
 
