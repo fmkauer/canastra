@@ -28,12 +28,12 @@ When a round starts, if a team has more than 1500 points, for their first play, 
 
 # TODO:
 
-- [x] Implement card deck creation and shuffling.
+- [ ] Implement card deck creation and shuffling.
 - [x] Implement player hands and drawing cards.
-- [x] Implement game logic for playing cards and forming canastas.
+- [ ] Implement game logic for playing cards and forming canastas.
     - [x] Implement player turns.
     - [x] Implement drawing cards from the deck or waste pile.
-    - [x] Implement playing cards from hand to the table.
+    - [ ] Implement playing cards from hand to the table.
     - [x] Implement validating played sequences.
     - [x] Implement forming Canastras.
 - [ ] Implement scoring system.
