@@ -14,10 +14,22 @@ class Table():
         self.deal()
         self.current_player_index = 0
 
-    def play_card_to_sequence(self, player: Player, card: Card, team_sequences: list):
-        # TODO: Implement logic to find the correct sequence based on card and existing sequences
-        target_sequence = team_sequences[0]  # Placeholder, replace with actual logic
-        player.play_card(card, target_sequence)
+    def play_card_to_sequence(self, player: Player, card: Card, team_sequences: list, sequence_index: int):
+        target_sequence = team_sequences[sequence_index]
+        if card not in player.hand:
+            raise ValueError("Card not in hand")
+
+        if len(target_sequence) == 0:
+            # New sequence - needs at least 3 cards
+            if len(player.hand) < 3:
+                raise ValueError("Not enough cards to start a new sequence")
+            # TODO: Validate that the 3 cards are a valid sequence
+        else:
+            # Adding to existing sequence - validate card
+            # TODO: Implement validation for adding to existing sequence
+            pass
+
+        player.play_card(card, team_sequences, sequence_index)
 
     def deal(self):
         for _ in range(13):
