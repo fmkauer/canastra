@@ -33,13 +33,15 @@ class Player():
             raise ValueError("Card not in hand")
 
     def choose_sequence(self, team_sequences: list):
-        while True:
+        valid_choice = False
+        while not valid_choice:
             print("Available sequences:")
             for i, sequence in enumerate(team_sequences):
                 print(f"{i+1}. {sequence}")
             try:
                 choice = int(input("Choose a sequence to add to (enter the number): ")) - 1
                 if 0 <= choice < len(team_sequences):
+                    valid_choice = True
                     return choice
                 else:
                     print("Invalid sequence choice. Please choose a valid number.")
