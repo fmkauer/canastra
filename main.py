@@ -1,8 +1,34 @@
 from deck import Deck
+from table import Table
+from player import Player
 
 def main():
-    deck = Deck(2)
-    print(deck.draw())
-    
+    team1_score = 0
+    team2_score = 0
+
+    while team1_score < 3000 and team2_score < 3000:
+        # Create players
+        player1 = Player("Player 1")
+        player2 = Player("Player 2")
+        player3 = Player("Player 3")
+        player4 = Player("Player 4")
+
+        # Initialize game
+        table = Table([player1, player2, player3, player4], 2)
+
+        # TODO: Implement game logic for a single round
+
+        # Update scores (placeholder)
+        team1_score += 100  
+        team2_score += 150  
+
+        print(f"Round over! Team 1: {team1_score}, Team 2: {team2_score}")
+
+    # Determine the winner
+    if team1_score >= 3000:
+        print("Team 1 wins!")
+    else:
+        print("Team 2 wins!")
+
 if __name__ == "__main__":
     main()
