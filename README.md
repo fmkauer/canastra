@@ -25,8 +25,8 @@ The game ends when a team reaches 3000 points, and the team with the most points
 
 # TODO:
 
-- [ ] Implement card deck creation and shuffling.
-- [ ] Implement player hands and drawing cards.
+- [x] Implement card deck creation and shuffling.
+- [x] Implement player hands and drawing cards.
 - [ ] Implement game logic for playing cards and forming canastas.
 - [ ] Implement scoring system.
 - [ ] Create a command-line interface or graphical user interface for playing the game.
