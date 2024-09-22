@@ -10,8 +10,13 @@ class Table():
         self.deck: Deck = Deck(deck_amount)
         self.waste: Waste = Waste()
         self.deal()
+        self.current_player_index = 0
 
     def deal(self):
         for _ in range(13):
             for player in self.players:
                 player.draw(self.deck)
+
+    def next_player(self):
+        self.current_player_index = (self.current_player_index + 1) % len(self.players)
+        return self.players[self.current_player_index]
