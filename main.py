@@ -31,11 +31,12 @@ def main():
             # Move to the next player
             current_player = table.next_player()
 
-        # Update scores (placeholder)
-        team1_score += 100
-        team2_score += 150
+        # Update scores 
+        team1_round_score, team2_round_score = table.get_round_scores()
+        team1_score += team1_round_score
+        team2_score += team2_round_score
 
-        print(f"Round over! Team 1: {team1_score}, Team 2: {team2_score}")
+        print(f"Round over! Team 1: {team1_score} (+{team1_round_score}), Team 2: {team2_score} (+{team2_round_score})")
 
     # Determine the winner
     if team1_score >= 3000:

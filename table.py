@@ -1,23 +1,30 @@
-from typing import List
+from typing import List, Tuple
 
 from cards import Card, Value
 from player import Player
 from waste import Waste
 from deck import Deck
 
-class Table():
-    def __init__(self, players: List[Player], deck_amount: int = 2):
-        self.players: List[Player] = players
-        self.deck: Deck = Deck(deck_amount)
-        self.waste: Waste = Waste()
-        self.team1_sequences = []
-        self.team2_sequences = []
-        self.deal()
-        self.current_player_index = 0
+        self.card_values = {
+            Value.A: 15,
+            Value.TWO: 20,
+            Value.THREE: 5,
+            Value.FOUR: 5,
+            Value.FIVE: 5,
+            Value.SIX: 5,
+            Value.SEVEN: 10,
+            Value.EIGHT: 10,
+            Value.NINE: 10,
+            Value.TEN: 10,
+            Value.J: 10,
+            Value.Q: 10,
+            Value.K: 10,
+            Value.JOKER: 20,
+        }
 
     def play_turn(self, player: Player):
         """Manages a player's turn during the game."""
-        print("\nWaste pile:")
+        print("\nLixo:")
         self.waste.show()
         print(f"\n{player.name}'s hand:")
         player.show_hand()
