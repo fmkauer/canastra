@@ -46,8 +46,8 @@ When a round starts, if a team has more than 1500 points, for their first play, 
         1. Add a method to `table.py` to check if a Canastra is formed.
         2. The method should check if a sequence has at least seven cards and apply the appropriate scoring rules.
 - [ ] Implement scoring system.
-    1. Create a method in `table.py` to calculate the score for a given team.
-    2. The method should consider the cards on the table, canastas formed, and any special cards used.
+    - [ ] Create a method in `table.py` to calculate the score for a given team.
+        1. The method should consider the cards on the table, canastas formed, and any special cards used.
 - [ ] Create a command-line interface or graphical user interface for playing the game.
     1. Choose a suitable framework for the interface (e.g., `curses` for CLI, `Tkinter` for GUI).
     2. Implement user input to allow players to interact with the game.
