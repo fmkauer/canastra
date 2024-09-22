@@ -5,6 +5,20 @@ from player import Player
 from waste import Waste
 from deck import Deck
 
+class Table:
+    def __init__(self, players: List[Player], teams_amount: int):
+        if len(players) != 4:
+            raise ValueError("There must be 4 players")
+        if teams_amount != 2:
+            raise ValueError("There must be 2 teams")
+        self.players = players
+        self.teams_amount = teams_amount
+        self.deck = Deck(2)
+        self.waste = Waste()
+        self.team1_sequences = []
+        self.team2_sequences = []
+        self.current_player_index = 0
+        self.deal()
         self.card_values = {
             Value.A: 15,
             Value.TWO: 20,
