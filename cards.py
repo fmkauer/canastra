@@ -43,13 +43,13 @@ class Card:
     def get_real_value(self):
         if self.value == Value.JOKER:
             return 0
-        elif self.value == Value.A:
+        elif self.value.value == Value.A.value:
             return 1
-        elif self.value == 'J':
+        elif self.value.value == 'J':
             return 11
-        elif self.value == 'Q':
+        elif self.value.value == 'Q':
             return 12
-        elif self.value == 'K':
+        elif self.value.value == 'K':
             return 13
         else:
             return int(self.value.value)
