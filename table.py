@@ -27,3 +27,11 @@ class Table():
     def next_player(self):
         self.current_player_index = (self.current_player_index + 1) % len(self.players)
         return self.players[self.current_player_index]
+
+    def show_sequences(self):
+        print("Team 1 Sequences:")
+        for sequence in self.team1_sequences:
+            print(sequence)
+        print("Team 2 Sequences:")
+        for sequence in self.team2_sequences:
+            print(sequence)
