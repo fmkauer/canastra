@@ -28,10 +28,12 @@ The game ends when a team reaches 3000 points, and the team with the most points
 - [x] Implement card deck creation and shuffling.
 - [x] Implement player hands and drawing cards.
 - [ ] Implement game logic for playing cards and forming canastas.
-    - [ ] Implement player turns.
+    - [x] Implement player turns.
         1. Create a method in `table.py` to cycle through players.
         2. The method should take the current player and return the next player.
     - [ ] Implement drawing cards from the deck or waste pile.
+        1. Add a method to `player.py` to draw from the waste pile.
+        2. Modify the existing `draw` method to take an optional argument indicating whether to draw from the deck or waste pile.
         1. Add a method to `player.py` to draw from the waste pile.
         2. Modify the existing `draw` method to take an optional argument indicating whether to draw from the deck or waste pile.
     - [ ] Implement playing cards from hand to the table.
