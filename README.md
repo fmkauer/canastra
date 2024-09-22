@@ -28,7 +28,33 @@ The game ends when a team reaches 3000 points, and the team with the most points
 - [x] Implement card deck creation and shuffling.
 - [x] Implement player hands and drawing cards.
 - [ ] Implement game logic for playing cards and forming canastas.
+    - [ ] Implement player turns.
+        1. Create a method in `table.py` to cycle through players.
+        2. The method should take the current player and return the next player.
+    - [ ] Implement drawing cards from the deck or waste pile.
+        1. Add a method to `player.py` to draw from the waste pile.
+        2. Modify the existing `draw` method to take an optional argument indicating whether to draw from the deck or waste pile.
+    - [ ] Implement playing cards from hand to the table.
+        1. Add a method to `player.py` to play a card from their hand to the table.
+        2. The method should take the card and the target sequence on the table as arguments.
+    - [ ] Implement validating played sequences.
+        1. Add a method to `table.py` to validate if a played sequence is valid.
+        2. The method should check if the sequence meets the Canastra rules (at least three cards of the same suit, using wildcards appropriately).
+    - [ ] Implement forming Canastras.
+        1. Add a method to `table.py` to check if a Canastra is formed.
+        2. The method should check if a sequence has at least seven cards and apply the appropriate scoring rules.
 - [ ] Implement scoring system.
+    1. Create a method in `table.py` to calculate the score for a given team.
+    2. The method should consider the cards on the table, canastas formed, and any special cards used.
 - [ ] Create a command-line interface or graphical user interface for playing the game.
+    1. Choose a suitable framework for the interface (e.g., `curses` for CLI, `Tkinter` for GUI).
+    2. Implement user input to allow players to interact with the game.
+    3. Display the game state, including player hands, the table, and the score.
 - [ ] Develop a reinforcement learning AI agent that can play Canastra.
+    1. Choose a reinforcement learning library (e.g., `TensorFlow`, `PyTorch`).
+    2. Define the state space, action space, and reward function for the Canastra environment.
+    3. Implement the AI agent using a suitable reinforcement learning algorithm (e.g., Q-learning, Deep Q-learning).
 - [ ] Train and evaluate the AI agent's performance.
+    1. Create a simulation environment where the AI agent can play against itself or other agents.
+    2. Train the AI agent using the chosen reinforcement learning algorithm.
+    3. Evaluate the agent's performance by measuring its win rate against different opponents.
