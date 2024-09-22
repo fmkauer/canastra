@@ -44,12 +44,26 @@ class Table():
                 print(card)
         self.show_sequences()
 
-        # 2. Play cards (optional)
-        while True:
-            play_card = input("Do you want to play a card? (y/n): ").lower()
-            if play_card == 'n':
-                break
-            elif play_card == 'y':
+# 2. Play cards (optional)
+play_card = input("Do you want to play a card? (y/n): ").lower()
+if play_card == 'y':
+    # Display player's hand and team sequences
+    print(f"\n{player.name}'s hand:")
+    for i, card in enumerate(player.hand):
+        if i == len(player.hand) - 1:
+            print(f"> {i}: {card} <")
+        else:
+            print(f"{i}: {card}")
+    self.show_sequences()
+
+    # Choose to start a new sequence or add to an existing one
+    while True:
+        choice = input("Start a new sequence (s) or add to an existing one (a)? ").lower()
+        if choice == 's':
+            # Implement starting a new sequence
+            # ... (logic for starting a new sequence)
+            break
+        elif choice == 'a':
                 break
             elif play_card == 'y':
                 # Display player's hand and team sequences
