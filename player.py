@@ -25,9 +25,19 @@ class Player():
     def draw_from_waste(self, waste: Waste):
         self.hand.extend(waste.take())
 
-    def play_card(self, card: Card, target_sequence: list):
+    def play_card(self, card: Card, target_sequence: list, sequence_index: int):
         if card in self.hand:
             self.hand.remove(card)
-            target_sequence.append(card)
+            target_sequence[sequence_index].append(card)
         else:
             raise ValueError("Card not in hand")
+
+    def choose_sequence(self, team_sequences: list):
+        print("Available sequences:")
+        for i, sequence in enumerate(team_sequences):
+            print(f"{i+1}. {sequence}")
+        choice = int(input("Choose a sequence to add to (enter the number): ")) - 1
+        if 0 <= choice < len(team_sequences):
+            return choice
+        else:
+            raise ValueError("Invalid sequence choice.")
