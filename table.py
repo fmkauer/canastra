@@ -33,13 +33,23 @@ class Table():
                 print("Invalid choice. Drawing from the deck by default.")
                 player.draw(self.deck)
         else:
-            print("You only have one card left, drawing from the deck.")
             player.draw(self.deck)
+
+        print(f"You drew: {player.hand[-1]}")
+        print(f"\n{player.name}'s hand:")
+        for i, card in enumerate(player.hand):
+            if i == len(player.hand) - 1:
+                print(f"> {card} <")
+            else:
+                print(card)
+        self.show_sequences()
 
         # 2. Play cards (optional)
         while True:
             play_card = input("Do you want to play a card? (y/n): ").lower()
             if play_card == 'n':
+                break
+            elif play_card == 'y':
                 break
             elif play_card == 'y':
                 # Display player's hand and team sequences
