@@ -22,7 +22,7 @@ class Deck():
                     else:
                         if suit != Suit.JOKER and value != Value.JOKER:
                             self.__cards.append(Card(suit, value))
-                    
+                random.shuffle(self.__cards)
     
     def shuffle(self):
         random.shuffle(self.__cards)
