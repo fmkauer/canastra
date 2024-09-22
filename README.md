@@ -7,7 +7,8 @@ The game is played in doubles, so it goes P1 (Team 1), P2 (Team 2), P3 (Team 1),
 The game starts with the dealer shuffling the cards and the player to the right cutting the deck. The dealer then gives 13 cards to each player, and the game starts.
 
 The first player has to draw a card, as there are no cards on the waste stack. But that player has the option to redraw, if they discard the card that they drew.
-Each player receives 13 cards. The game goes to 3000 points.
+Each player receives 13 cards. The game goes to 3000 points. 
+When a player starts their turn with only one card left, they can no longer draw from the waste pile.
 
 You try to make sequences of 7 cards of the same suit, which is called Canastra, which gives you 200 points (if it's a clean one, the 'dirty' one gives you only half (100 points))
 
