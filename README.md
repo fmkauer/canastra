@@ -21,7 +21,9 @@ There a waste stack, which is visible for everyone and all cards in it are visib
 
 Every turn each player has a decision, to either draw a card from the deck or to get the whole waste stack. And then they decide if they put some card on the table, either a new sequence, starting with 3 cards at minimum, or to add to a sequence from their team already on the table.
 
-The game ends when a team reaches 3000 points, and the team with the most points wins.
+The game ends when a team reaches 3000 points, and the team with the most points wins. The round ends when a player manages to play all his cards. When that happens, his team gets 50 points and the cards of the remaining players go to the opposite team to be counted as their points. 
+
+When a round starts, if a team has more than 1500 points, for their first play, they need to have at least 100 points when playing the cards, by either having a Canastra, or the cards' points summing up to that amount. 
 
 # TODO:
 
