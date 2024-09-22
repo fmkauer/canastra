@@ -10,11 +10,13 @@ class Player():
     
     def __repr__(self):
         return f"{self.name} has {len(self.hand)} cards"
-    
+
     def draw(self, deck: Deck):
         self.hand.append(deck.draw())
 
     def show_hand(self):
+        sorted_hand = sorted(self.hand)
+        self.hand = sorted_hand
         for card in self.hand:
             print(card)
     

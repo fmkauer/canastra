@@ -2,6 +2,7 @@
 # possible suits: hearts, diamonds, clubs, spades
 # possible values: A, 2-10, J, Q, K
 
+from __future__ import annotations
 from enum import Enum
 
 class Suit(Enum):
@@ -40,6 +41,14 @@ class Card:
     def __repr__(self):
         return "Joker" if self.value == Value.JOKER else f"{self.value.value} of {self.suit.value}"
     
+    def __lt__(self, other: Card):
+        if isinstance(other, Card):
+            # When comparing, compare the suits and the real values, the suits are compared first, being H, D, C, S
+            if self.suit == other.suit:
+                return self.real_value < other.real_value
+            else:
+                return self.suit.value < other.suit.value
+
     def get_real_value(self):
         if self.value == Value.JOKER:
             return 0
