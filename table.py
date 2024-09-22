@@ -17,58 +17,44 @@ class Table():
 
     def play_card_to_sequence(self, player: Player, card: Card, team_sequences: list, sequence_index: int):
         target_sequence = team_sequences[sequence_index]
-        if card not in player.hand:
-            raise ValueError("Card not in hand")
 
-        if len(target_sequence) == 0:
-            # New sequence - needs at least 3 cards
-            if len(player.hand) < 3:
-                raise ValueError("Not enough cards to start a new sequence")
-            if not self.is_valid_sequence(player.hand[:3]):
-                raise ValueError("Invalid sequence")
-        else:
-            # Adding to existing sequence - validate card
-            if not self.is_valid_sequence(target_sequence + [card]):
-                raise ValueError("Invalid card for this sequence")
+        # Validate the move based on Canastra rules
+        if not self.is_valid_move(card, target_sequence):
+            raise ValueError("Invalid move!")
 
+        # If the move is valid, proceed with playing the card
         player.play_card(card, team_sequences, sequence_index)
 
-    def is_valid_sequence(self, sequence: List[Card]) -> bool:
+    def is_valid_move(self, card: Card, sequence: List[Card]) -> bool:
         """
-        Check if a played sequence is valid according to Canastra rules.
+        Check if playing a card to a sequence is a valid move in Canastra.
 
         Args:
-            sequence: A list of Card objects representing the played sequence.
+            card: The Card object being played.
+            sequence: A list of Card objects representing the sequence.
 
         Returns:
-            True if the sequence is valid, False otherwise.
+            True if the move is valid, False otherwise.
         """
-        # Check if the sequence has at least three cards
-        if len(sequence) < 3:
-            return False
+        # If the sequence is empty, it's always valid to start a new one
+        if not sequence:
+            return True
 
-        # Check if all cards have the same suit, considering wildcards
-        wildcards = 0
-        base_suit = None
-        for card in sequence:
-            if card.value == Value.JOKER or card.value == Value.TWO:
-                wildcards += 1
-            elif base_suit is None:
-                base_suit = card.suit
-            elif card.suit != base_suit:
-                return False
+        # Check if the card's suit or value matches the sequence, considering wildcards
+        wildcards = [Value.JOKER, Value.TWO]
+        base_suit = sequence[0].suit if sequence[0].value not in wildcards else None
 
-        # Check if there are enough natural cards (non-wildcards)
-        if len(sequence) - wildcards < 3:
-            return False
+        if card.value in wildcards or card.suit == base_suit:
+            return True
 
-        return True
+        return False
 
     def deal(self):
         for _ in range(13):
             for player in self.players:
                 player.draw(self.deck)
         # TODO: Implement logic to check if a team has more than 1500 points and requires a 100+ points first play
+
 
     def next_player(self):
         self.current_player_index = (self.current_player_index + 1) % len(self.players)
