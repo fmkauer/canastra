@@ -1,4 +1,4 @@
-# Canastra rules
+# Canastra rules - TODO
 
 General ruling of the game, _~~or at least, the way I learned with my grandparents.~~_
 
@@ -22,3 +22,13 @@ There a waste stack, which is visible for everyone and all cards in it are visib
 Every turn each player has a decision, to either draw a card from the deck or to get the whole waste stack. And then they decide if they put some card on the table, either a new sequence, starting with 3 cards at minimum, or to add to a sequence from their team already on the table.
 
 The game ends when a team reaches 3000 points, and the team with the most points wins.
+
+# TODO:
+
+- [ ] Implement card deck creation and shuffling.
+- [ ] Implement player hands and drawing cards.
+- [ ] Implement game logic for playing cards and forming canastas.
+- [ ] Implement scoring system.
+- [ ] Create a command-line interface or graphical user interface for playing the game.
+- [ ] Develop a reinforcement learning AI agent that can play Canastra.
+- [ ] Train and evaluate the AI agent's performance.
