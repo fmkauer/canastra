@@ -68,6 +68,7 @@ class Table():
         for _ in range(13):
             for player in self.players:
                 player.draw(self.deck)
+        # TODO: Implement logic to check if a team has more than 1500 points and requires a 100+ points first play
 
     def next_player(self):
         self.current_player_index = (self.current_player_index + 1) % len(self.players)
@@ -99,10 +100,10 @@ class Table():
 
         # Apply scoring rules based on Canastra type
         if is_clean:
-            # TODO: Implement scoring logic for clean Canastra
+            # TODO: Implement scoring logic for clean Canastra, adding points to the team score
             print("Clean Canastra formed!")
         else:
-            # TODO: Implement scoring logic for dirty Canastra
+            # TODO: Implement scoring logic for dirty Canastra, adding points to the team score
             print("Dirty Canastra formed!")
 
         return True
