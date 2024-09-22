@@ -22,6 +22,5 @@ class Player():
         self.hand.remove(card)
         trash.add(card)
 
-    
-    
-    
+    def draw_from_waste(self, waste: Waste):
+        self.hand.extend(waste.take())
