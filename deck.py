@@ -22,10 +22,12 @@ class Deck():
                     else:
                         if suit != Suit.JOKER and value != Value.JOKER:
                             self.__cards.append(Card(suit, value))
-                random.shuffle(self.__cards)
     
     def shuffle(self):
         random.shuffle(self.__cards)
     
     def draw(self) -> Card:
         return self.__cards.pop()
+
+    def __len__(self):
+        return len(self.__cards)
