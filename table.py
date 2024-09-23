@@ -204,7 +204,6 @@ class Table:
         for _ in range(13):
             for player in self.players:
                 player.draw(self.deck)
-        # TODO: Implement logic to check if a team has more than 1500 points and requires a 100+ points first play
         
 
 
