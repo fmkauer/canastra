@@ -56,74 +56,10 @@ class Table:
         else:
             player.draw(self.deck)
 
-        # 2. Play cards (optional)
-        playing = True
-        while playing:
-            play_card = input("Do you want to play a card? (y/n): ").lower()
-            if play_card == 'y':
-                # Display player's hand and team sequences
-                print(f"\n{player.name}'s hand:")
-                for i, card in enumerate(player.hand):
-                    if i == len(player.hand) - 1:
-                        print(f"> {i}: {card} <")
-                    else:
-                        print(f"{i}: {card}")
-                self.show_sequences()
-
-                # Choose to start a new sequence or add to an existing one
-                while True:
-                    choice = input("Start a new sequence (s) or add to an existing one (a)? ").lower()
-                    if choice == 's':
-                        self.get_cards_for_new_sequence(player)
-                        break
-                    elif choice == 'a':
-                        adding = True
-                        while adding:
-                            try:
-                                # Display player's hand
-                                print(f"\n{player.name}'s hand:")
-                                for i, card in enumerate(player.hand):
-                                    print(f"{i}: {card}")
-                                card_index = int(input("Enter the index of the card to play (0-based): "))
-                                card_to_play = player.hand[card_index]
-
-                                # Determine which team the player belongs to
-                                if (self.players.index(player) + 1) % 2 == 0:
-                                    team_sequences = self.team2_sequences
-                                else:
-                                    team_sequences = self.team1_sequences
-
-                                sequence_index = player.choose_sequence(team_sequences)
-
-                                # Attempt to play the card
-                                if self.is_valid_move(card_to_play, team_sequences[sequence_index]):
-                                    self.play_card_to_sequence(player, card_to_play, team_sequences, sequence_index)
-                                    print("Card played successfully!")
-                                else:
-                                    print("Invalid move. Try again.")
-                                    break  # Exit the loop if the card was played successfully
-                            except (ValueError, IndexError) as e:
-                                print(f"Invalid input or move: {e}")
-                            
-                            keep_adding = input("Do you want to add another card? (y/n): ").lower()
-                            if keep_adding != 'y':
-                                adding = False
-                        break
-                    else:
-                        print("Invalid choice. Please enter 's' or 'a'.")
-                
-            else:
-                playing = False
+        self.play_card(player)
 
         # 3. Discard a card
-        while True:
-            try:
-                card_index = int(input("Enter the index of the card to discard (0-based): "))
-                card_to_discard = player.hand[card_index]
-                player.discard(self.waste, card_to_discard)
-                break
-            except (ValueError, IndexError) as e:
-                print(f"Invalid input: {e}")
+        self.discard_card(player)
 
 
     def play_card_to_sequence(self, player: Player, card: Card, team_sequences: list, sequence_index: int):
@@ -225,3 +161,100 @@ class Table:
         team1_score = self.calculate_team_score(self.team1_sequences)
         team2_score = self.calculate_team_score(self.team2_sequences)
         return team1_score, team2_score
+
+    def discard_card(self, player: Player):
+        while True:
+            try:
+                card_index = int(input("Enter the index of the card to discard (0-based): "))
+                card_to_discard = player.hand[card_index]
+                player.discard(self.waste, card_to_discard)
+                return
+            except (ValueError, IndexError) as e:
+                print(f"Invalid input: {e}")
+
+    def get_cards_for_new_sequence(self, player: Player):
+        starting = True
+        while starting:
+            try:
+                # Display player's hand
+                print(f"\n{player.name}'s hand:")
+                for i, card in enumerate(player.hand):
+                    print(f"{i}: {card}")
+                card_index = int(input("Enter the index of the card to play (0-based): "))
+                card_to_play = player.hand[card_index]
+
+                # Determine which team the player belongs to
+                if (self.players.index(player) + 1) % 2 == 0:
+                    team_sequences = self.team2_sequences
+                else:
+                    team_sequences = self.team1_sequences
+
+                # Attempt to play the card
+                if self.is_valid_move(card_to_play, team_sequences[0]):
+                    team_sequences.append([card_to_play])
+                    print("Card played successfully!")
+                    starting = False
+                else:
+                    print("Invalid move. Try again.")
+            except (ValueError, IndexError) as e:
+                print(f"Invalid input or move: {e}")
+
+    
+    def play_card(self, player: Player):
+        playing = True
+        while playing:
+            play_card = input("Do you want to play a card? (y/n): ").lower()
+            if play_card == 'y':
+                # Display player's hand and team sequences
+                print(f"\n{player.name}'s hand:")
+                for i, card in enumerate(player.hand):
+                    if i == len(player.hand) - 1:
+                        print(f"> {i}: {card} <")
+                    else:
+                        print(f"{i}: {card}")
+                self.show_sequences()
+
+                # Choose to start a new sequence or add to an existing one
+                while True:
+                    choice = input("Start a new sequence (s) or add to an existing one (a)? ").lower()
+                    if choice == 's':
+                        self.get_cards_for_new_sequence(player)
+                        break
+                    elif choice == 'a':
+                        adding = True
+                        while adding:
+                            try:
+                                # Display player's hand
+                                print(f"\n{player.name}'s hand:")
+                                for i, card in enumerate(player.hand):
+                                    print(f"{i}: {card}")
+                                card_index = int(input("Enter the index of the card to play (0-based): "))
+                                card_to_play = player.hand[card_index]
+
+                                # Determine which team the player belongs to
+                                if (self.players.index(player) + 1) % 2 == 0:
+                                    team_sequences = self.team2_sequences
+                                else:
+                                    team_sequences = self.team1_sequences
+
+                                sequence_index = player.choose_sequence(team_sequences)
+
+                                # Attempt to play the card
+                                if self.is_valid_move(card_to_play, team_sequences[sequence_index]):
+                                    self.play_card_to_sequence(player, card_to_play, team_sequences, sequence_index)
+                                    print("Card played successfully!")
+                                else:
+                                    print("Invalid move. Try again.")
+                                    break  # Exit the loop if the card was played successfully
+                            except (ValueError, IndexError) as e:
+                                print(f"Invalid input or move: {e}")
+                            
+                            keep_adding = input("Do you want to add another card? (y/n): ").lower()
+                            if keep_adding != 'y':
+                                adding = False
+                        break
+                    else:
+                        print("Invalid choice. Please enter 's' or 'a'.")
+                
+            else:
+                playing = False
